@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum Builder</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="container">
+    <h1>Morning Scrum Builder</h1>
+    <label for="yesterday">What did you do yesterday ?</label><br>
+    <textarea class="textbox1" id="yesterday" rows="8" cols="30" placeholder="test"></textarea><br>
+    <label for="difficulties">What are the difficulties faced while learning ?</label><br>
+    <textarea class="textbox2" id="difficulties" rows="8" cols="30" placeholder="test"></textarea><br>
+    <label for="today">What will you do today ?</label><br>
+    <textarea class="textbox3" id="today" rows="5" cols="30" placeholder="test"></textarea><br>
+    <label for="duration">Scrum duration</label><br>
+    <input type="range" id="duration" min="1" max="5" step="1" value="2">
+    <span id="value">2</span>
+    <button id="btn1" disabled class="generate" onclick="generate()">Generate</button>
+    <div id="generated" class="hidden">test</div>
+    </div>
+</body>
+</html>
