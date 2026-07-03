@@ -27,14 +27,14 @@ function checkBox(){
     textbox3.addEventListener('input', checkBox);
 
 //taking user inputs
-function generate(){
+async function generate(){
     let yesterday = document.querySelector('#yesterday').value;
     let difficulties = document.querySelector('#difficulties').value;
     let today = document.querySelector('#today').value;
     let duration = document.querySelector('#duration').value;
     generated.classList.remove('hidden');
     
-    let prompt = `You are a Morning Scrum Coach for non-native English speakers.
+    const prompt = `You are a Morning Scrum Coach for non-native English speakers.
 
 Your job is to convert rough daily notes into a natural, fluent, spoken-style daily stand-up update.
 
@@ -73,4 +73,22 @@ ${duration} minutes
 
 OUTPUT:
 Write the full spoken daily scrum update now.`;
+//converting to json
+const body = JSON.stringify({
+      model: "gemini-3.5-flash",
+      input: prompt
+    });
+//send request to gemini api
+const url = "your url";
+const response = await fetch(url, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-goog-api-key": "YOUR API KEY"
+  },
+  body: body
+});
+const data = await response.json();
+const outputStep = data.steps.find(step => step.type === "model_output");
+
 };
